@@ -12,7 +12,7 @@ namespace PaperRound.Specs.Specification
         public NumberIsSkipped()
         {
             var parser = new StreetSpecificationParser();
-            _fileResult = parser.ParseStreetSpecification("..\\..\\Specifications\\NumberIsSkipped.txt");
+            _fileResult = parser.ParseStreetSpecification("..\\..\\SpecificationExamples\\NumberIsSkipped.txt");
         }
 
         [Fact(DisplayName = "A message that the file is not valid")]

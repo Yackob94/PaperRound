@@ -12,7 +12,7 @@ namespace PaperRound.Specs.Specification
         public NumberIsRepeated()
         {
             var parser = new StreetSpecificationParser();
-            _fileResult = parser.ParseStreetSpecification("..\\..\\Specifications\\NumberIsRepeated.txt");
+            _fileResult = parser.ParseStreetSpecification("..\\..\\SpecificationExamples\\NumberIsRepeated.txt");
         }
 
         [Fact(DisplayName = "A message that the file is not valid")]

@@ -12,7 +12,7 @@ namespace PaperRound.Specs.Specification
         public ValidSpecificationFileUploaded()
         {
             var parser = new StreetSpecificationParser();
-            _fileResult = parser.ParseStreetSpecification("..\\..\\Specifications\\ValidSpecificationFile.txt");
+            _fileResult = parser.ParseStreetSpecification("..\\..\\SpecificationExamples\\ValidSpecificationFile.txt");
         }
         [Fact(DisplayName = "A message that the file is valid")]
         private void FileIsValid()

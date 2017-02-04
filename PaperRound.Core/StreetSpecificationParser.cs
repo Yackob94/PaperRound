@@ -31,9 +31,23 @@ namespace PaperRound.Core
                 };
             }
 
-            // Parse the numbers
             var specArry = specification.Split(' ');
-            var houseNumbers = specArry.Select(int.Parse).ToArray();
+            int[] houseNumbers;
+            try
+            {
+                // Parse the numbers
+                houseNumbers = specArry.Select(int.Parse).ToArray();
+            }
+            catch (FormatException)
+            {
+                // Catch any non numerics
+                return new FileResult
+                {
+                    Valid = false,
+                    Message = Messages.CannotHaveNonNumerics
+                };
+            }
+
             var oddNumbers = houseNumbers.Where(n => n % 2 != 0).ToArray();
             var evenNumbers = houseNumbers.Where(n => n % 2 == 0).ToArray();
 

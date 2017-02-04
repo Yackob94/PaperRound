@@ -4,15 +4,15 @@ using Xunit;
 
 namespace PaperRound.Specs.Specification
 {
-    [Trait("Specification file is empty", "")]
+    [Trait("Specification file contains non-numeric characters", "")]
 
-    public class FileIsEmpty
+    public class NonNumericCharacters
     {
         private readonly FileResult _fileResult;
-        public FileIsEmpty()
+        public NonNumericCharacters()
         {
             var parser = new StreetSpecificationParser();
-            _fileResult = parser.ParseStreetSpecification("..\\..\\SpecificationExamples\\Empty.txt");
+            _fileResult = parser.ParseStreetSpecification("..\\..\\SpecificationExamples\\NonNumericCharacters.txt");
         }
 
         [Fact(DisplayName = "A message that the file is not valid")]
@@ -24,7 +24,7 @@ namespace PaperRound.Specs.Specification
         [Fact(DisplayName = "User knows why the file is not valid")]
         private void ReasonMessage()
         {
-            Assert.Equal(Messages.CannotBeEmpty, _fileResult.Message);
+            Assert.Equal(Messages.CannotHaveNonNumerics, _fileResult.Message);
         }
     }
 }

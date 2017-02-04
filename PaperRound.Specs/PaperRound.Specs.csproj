@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Specification\NonNumericCharacters.cs" />
     <Compile Include="Specification\FileIsEmpty.cs" />
     <Compile Include="Specification\NumberIsRepeated.cs" />
     <Compile Include="Specification\NumberIsSkipped.cs" />
@@ -64,6 +65,7 @@
   <ItemGroup>
     <None Include="Assumptions.md" />
     <None Include="packages.config" />
+    <Content Include="SpecificationExamples\NonNumericCharacters.txt" />
     <Content Include="SpecificationExamples\Empty.txt" />
     <Content Include="SpecificationExamples\NumberIsSkipped.txt" />
     <Content Include="SpecificationExamples\NumberIsRepeated.txt" />

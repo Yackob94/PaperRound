@@ -86,5 +86,14 @@ namespace PaperRound.Core {
                 return ResourceManager.GetString("CannotBeSkipped", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specification cannot have non-numeric characters.
+        /// </summary>
+        public static string CannotHaveNonNumerics {
+            get {
+                return ResourceManager.GetString("CannotHaveNonNumerics", resourceCulture);
+            }
+        }
     }
 }
