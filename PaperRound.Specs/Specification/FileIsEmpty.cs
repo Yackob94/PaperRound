@@ -15,7 +15,7 @@ namespace PaperRound.Specs.Specification
             _fileResult = parser.ParseStreetSpecification("..\\..\\SpecificationExamples\\Empty.txt");
         }
 
-        [Fact(DisplayName = "A message that the file is not valid")]
+        [Fact(DisplayName = "User receives message that the file is not valid")]
         private void FileIsNotValid()
         {
             Assert.False(_fileResult.Valid);

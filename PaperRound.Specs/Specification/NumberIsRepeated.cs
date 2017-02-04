@@ -15,16 +15,16 @@ namespace PaperRound.Specs.Specification
             _fileResult = parser.ParseStreetSpecification("..\\..\\SpecificationExamples\\NumberIsRepeated.txt");
         }
 
-        [Fact(DisplayName = "A message that the file is not valid")]
-        private void FileIsNotValid()
+        [Fact(DisplayName = "User receives message that the specification is not valid")]
+        private void SpecificationIsNotValid()
         {
-            Assert.False(_fileResult.Valid);
+            Assert.False(_fileResult.StreetSpecification.Valid);
         }
 
-        [Fact(DisplayName = "User knows why the file is not valid")]
+        [Fact(DisplayName = "User knows why the specification is not valid")]
         private void ReasonMessage()
         {
-            Assert.Equal(Messages.CannotBeRepeated, _fileResult.Message);
+            Assert.Equal(Messages.CannotBeRepeated, _fileResult.StreetSpecification.Message);
         }
     }
 }

@@ -126,6 +126,9 @@
   <data name="CannotBeSkipped" xml:space="preserve">
     <value>The specification cannot skip a house</value>
   </data>
+  <data name="CannotHaveMultipleLines" xml:space="preserve">
+    <value>The specification cannot have multiple lines</value>
+  </data>
   <data name="CannotHaveNonNumerics" xml:space="preserve">
     <value>The specification cannot have non-numeric characters</value>
   </data>

@@ -8,10 +8,6 @@ namespace PaperRound.Core.Models
         public StreetSpecification StreetSpecification { get; set; }
         public string Message { get; set; }
 
-        public FileResult()
-        {
-            StreetSpecification = null;
-            Valid = true;
-        }
+        public int[] HouseNumbers { get; set; }
     }
 }

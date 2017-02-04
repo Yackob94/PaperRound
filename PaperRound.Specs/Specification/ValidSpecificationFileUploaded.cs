@@ -14,13 +14,19 @@ namespace PaperRound.Specs.Specification
             var parser = new StreetSpecificationParser();
             _fileResult = parser.ParseStreetSpecification("..\\..\\SpecificationExamples\\ValidSpecificationFile.txt");
         }
-        [Fact(DisplayName = "A message that the file is valid")]
+        [Fact(DisplayName = "User receives message that the file is valid")]
         private void FileIsValid()
         {
             Assert.True(_fileResult.Valid);
         }
 
-        [Fact(DisplayName = "Number of houses on a street")]
+        [Fact(DisplayName = "User receives message that the specification is valid")]
+        private void SpecificationIsValid()
+        {
+            Assert.True(_fileResult.StreetSpecification.Valid);
+        }
+
+        [Fact(DisplayName = "Total number of houses matches the total of the north and south")]
         private void NumberOfHouses()
         {
             Assert.Equal(_fileResult.StreetSpecification.RightHouses + _fileResult.StreetSpecification.LeftHouses, _fileResult.StreetSpecification.TotalHouses);

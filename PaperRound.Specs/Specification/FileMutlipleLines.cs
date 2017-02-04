@@ -4,15 +4,15 @@ using Xunit;
 
 namespace PaperRound.Specs.Specification
 {
-    [Trait("Specification file contains non-numeric characters", "")]
+    [Trait("Specification file has multiple lines", "")]
 
-    public class NonNumericCharacters
+    public class FileMutlipleLines
     {
         private readonly FileResult _fileResult;
-        public NonNumericCharacters()
+        public FileMutlipleLines()
         {
             var parser = new StreetSpecificationParser();
-            _fileResult = parser.ParseStreetSpecification("..\\..\\SpecificationExamples\\NonNumericCharacters.txt");
+            _fileResult = parser.ParseStreetSpecification("..\\..\\SpecificationExamples\\FileMutlipleLines.txt");
         }
 
         [Fact(DisplayName = "User receives message that the file is not valid")]
@@ -24,7 +24,7 @@ namespace PaperRound.Specs.Specification
         [Fact(DisplayName = "User knows why the file is not valid")]
         private void ReasonMessage()
         {
-            Assert.Equal(Messages.CannotHaveNonNumerics, _fileResult.Message);
+            Assert.Equal(Messages.CannotHaveMultipleLines, _fileResult.Message);
         }
     }
 }

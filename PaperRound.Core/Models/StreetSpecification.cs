@@ -2,14 +2,10 @@
 {
     public class StreetSpecification
     {
-        public int LeftHouses { get; }
-        public int RightHouses { get; }
+        public bool Valid { get; set; }
+        public int LeftHouses { get; set; }
+        public int RightHouses { get; set; }
         public int TotalHouses => LeftHouses + RightHouses;
-
-        public StreetSpecification(int leftHouses, int rightHouses)
-        {
-            LeftHouses = leftHouses;
-            RightHouses = rightHouses;
-        }
+        public string Message { get; set; }
     }
 }
