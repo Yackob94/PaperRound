@@ -55,16 +55,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Report\NumberIsSkipped.cs" />
     <Compile Include="Report\ValidSpecificationFileUploaded.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assumptions.md" />
     <None Include="packages.config" />
+    <Content Include="Specifications\NumberIsSkipped.txt" />
     <Content Include="Specifications\ValidSpecificationFile.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PaperRound.Core\PaperRound.Core.csproj">
+      <Project>{1680BFE1-2EB4-428A-9CD3-14308765460C}</Project>
+      <Name>PaperRound.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
