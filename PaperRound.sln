@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26127.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperRound.Core", "PaperRound.Core\PaperRound.Core.csproj", "{1680BFE1-2EB4-428A-9CD3-14308765460C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperRound.Specs", "PaperRound.Specs\PaperRound.Specs.csproj", "{2D687DEA-2996-451D-B953-74C982F2FE93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1680BFE1-2EB4-428A-9CD3-14308765460C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1680BFE1-2EB4-428A-9CD3-14308765460C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1680BFE1-2EB4-428A-9CD3-14308765460C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D687DEA-2996-451D-B953-74C982F2FE93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D687DEA-2996-451D-B953-74C982F2FE93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D687DEA-2996-451D-B953-74C982F2FE93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D687DEA-2996-451D-B953-74C982F2FE93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
