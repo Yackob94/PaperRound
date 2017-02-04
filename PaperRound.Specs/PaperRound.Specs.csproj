@@ -55,15 +55,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Report\NumberIsSkipped.cs" />
-    <Compile Include="Report\ValidSpecificationFileUploaded.cs" />
+    <Compile Include="Specification\FileIsEmpty.cs" />
+    <Compile Include="Specification\NumberIsRepeated.cs" />
+    <Compile Include="Specification\NumberIsSkipped.cs" />
+    <Compile Include="Specification\ValidSpecificationFileUploaded.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assumptions.md" />
     <None Include="packages.config" />
-    <Content Include="Specifications\NumberIsSkipped.txt" />
-    <Content Include="Specifications\ValidSpecificationFile.txt" />
+    <Content Include="SpecificationExamples\Empty.txt" />
+    <Content Include="SpecificationExamples\NumberIsSkipped.txt" />
+    <Content Include="SpecificationExamples\NumberIsRepeated.txt" />
+    <Content Include="SpecificationExamples\ValidSpecificationFile.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

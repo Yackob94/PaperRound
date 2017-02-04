@@ -2,17 +2,17 @@
 using PaperRound.Core.Models;
 using Xunit;
 
-namespace PaperRound.Specs.Report
+namespace PaperRound.Specs.Specification
 {
-    [Trait("Specification file skips a number in the sequence", "")]
+    [Trait("Specification file is empty", "")]
 
-    public class NumberIsSkipped
+    public class FileIsEmpty
     {
         private readonly FileResult _fileResult;
-        public NumberIsSkipped()
+        public FileIsEmpty()
         {
             var parser = new StreetSpecificationParser();
-            _fileResult = parser.ParseStreetSpecification("..\\..\\Specifications\\NumberIsSkipped.txt");
+            _fileResult = parser.ParseStreetSpecification("..\\..\\Specifications\\Empty.txt");
         }
 
         [Fact(DisplayName = "A message that the file is not valid")]
@@ -24,7 +24,7 @@ namespace PaperRound.Specs.Report
         [Fact(DisplayName = "User knows why the file is not valid")]
         private void ReasonMessage()
         {
-            Assert.Equal(Messages.CannotBeSkipped, _fileResult.Message);
+            Assert.Equal(Messages.CannotBeEmpty, _fileResult.Message);
         }
     }
 }

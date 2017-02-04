@@ -1,5 +1,5 @@
 ﻿# Assumptions
-### Houses on a particular side of a street are not directly next to each other.  
+### Houses on a particular side of a street are not directly next to each other  
 For example:  
 1 3 5 7 9 2 4 6 8  
 ```  
@@ -20,4 +20,7 @@ Not Valid
 1 5 3 7 2 4 6
 
 ### Numbers must be on a single line
-Any file with a line count > 1 will be marked as invalid
+No file will ever contain more than one line of numbers
+
+### File always contains numbers
+The file will always contain numbers

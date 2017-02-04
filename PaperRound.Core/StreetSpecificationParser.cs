@@ -9,28 +9,40 @@ namespace PaperRound.Core
     {
         public FileResult ParseStreetSpecification(string relaitveFilePath)
         {
+            // Get file
             var filePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), relaitveFilePath));
 
             if (!File.Exists(filePath))
                 throw new ArgumentException($"File does not exist at path {filePath}");
 
             string specification;
+
+            // Read the first line
             using (var reader = new StreamReader(filePath))
-            {
                 specification = reader.ReadLine();
+
+            // If it's empty return a not valid result
+            if (string.IsNullOrWhiteSpace(specification))
+            {
+                return new FileResult
+                {
+                    Valid = false,
+                    Message = Messages.CannotBeEmpty
+                };
             }
 
+            // Parse the numbers
             var specArry = specification.Split(' ');
             var houseNumbers = specArry.Select(int.Parse).ToArray();
             var oddNumbers = houseNumbers.Where(n => n % 2 != 0).ToArray();
             var evenNumbers = houseNumbers.Where(n => n % 2 == 0).ToArray();
 
+            // Validate the numbers
             var fileResult = ValidateSpecification(oddNumbers, evenNumbers);
 
+            // If it's valid create and assign the specification for the report
             if (fileResult.Valid)
-            {
-                fileResult.StreetSpecification = new StreetSpecification(oddNumbers.Count(), evenNumbers.Count());
-            }
+                fileResult.StreetSpecification = new StreetSpecification(oddNumbers.Length, evenNumbers.Length);
 
             return fileResult;
         }
@@ -38,11 +50,30 @@ namespace PaperRound.Core
         private FileResult ValidateSpecification(int[] oddNumbers, int[] evenNumbers)
         {
             var fileResult = new FileResult();
+
+            var evenNumberCount = evenNumbers.Length;
+            var oddNumberCount = oddNumbers.Length;
+
+            var distinctEvenNumberCount = evenNumbers.Distinct().Count();
+            var distinctOddNumberCount = oddNumbers.Distinct().Count();
+
+            // Check to make sure each house only appears once
+            if (distinctEvenNumberCount != evenNumberCount || distinctOddNumberCount != oddNumberCount)
+            {
+                fileResult.Valid = false;
+                fileResult.Message = Messages.CannotBeRepeated;
+                return fileResult;
+            }
+
             var orderedEvenNumbers = evenNumbers.OrderBy(n => n);
             var orderedOddNumbers = oddNumbers.OrderBy(n => n);
 
-            if (orderedEvenNumbers.Last() / 2 != orderedEvenNumbers.Count() ||
-                Math.Ceiling((double)orderedOddNumbers.Last() / 2) != orderedOddNumbers.Count())
+            var expectedEvenCount = orderedEvenNumbers.Last() / 2;
+            var expectedOddCount = Math.Ceiling((double)orderedOddNumbers.Last() / 2);
+
+            // If we have higher last number than the actual count
+            // then a number has been missed
+            if (expectedEvenCount > evenNumberCount || expectedOddCount > oddNumberCount)
             {
                 fileResult.Valid = false;
                 fileResult.Message = Messages.CannotBeSkipped;

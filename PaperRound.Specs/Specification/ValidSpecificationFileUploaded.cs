@@ -2,7 +2,7 @@
 using PaperRound.Core.Models;
 using Xunit;
 
-namespace PaperRound.Specs.Report
+namespace PaperRound.Specs.Specification
 {
     [Trait("A valid specification file is uploaded", "")]
     public class ValidSpecificationFileUploaded

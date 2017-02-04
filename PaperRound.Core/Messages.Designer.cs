@@ -61,6 +61,24 @@ namespace PaperRound.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specification file is empty.
+        /// </summary>
+        public static string CannotBeEmpty {
+            get {
+                return ResourceManager.GetString("CannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specification cannot have duplicate houses.
+        /// </summary>
+        public static string CannotBeRepeated {
+            get {
+                return ResourceManager.GetString("CannotBeRepeated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specification cannot skip a house.
         /// </summary>
         public static string CannotBeSkipped {
