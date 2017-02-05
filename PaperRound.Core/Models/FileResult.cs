@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace PaperRound.Core.Models
+﻿namespace PaperRound.Core.Models
 {
     public class FileResult
     {

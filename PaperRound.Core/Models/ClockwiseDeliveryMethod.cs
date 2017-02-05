@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PaperRound.Core.Models
 {
-    public class ClockwiseDeliveryMethod
+    public class ClockwiseDeliveryMethod : IDeliveryMethod
     {
         // House numbers in order to be delivered
-        public ICollection<int> DeliveryRoute { get; set; }
+        public List<int> DeliveryRoute { get; set; }
         // Number of times the road needs to be crossed to deliver the papers
         public int CrossingRoadCount { get; set; }
 
-        public ClockwiseDeliveryMethod(StreetSpecification specification)
+        public void GenerateDelivery(StreetSpecification specification)
         {
             CrossingRoadCount = 1;
 

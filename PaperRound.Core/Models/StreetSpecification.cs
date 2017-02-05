@@ -7,8 +7,8 @@ namespace PaperRound.Core.Models
     {
         public bool Valid { get; set; }
         public string Message { get; set; }
-        public ICollection<int> Houses { get; set; }
-        public ICollection<int> LeftHouses => Houses.Where(h => h % 2 != 0).ToList();
-        public ICollection<int> RightHouses => Houses.Where(h => h % 2 == 0).ToList();
+        public List<int> Houses { get; set; }
+        public List<int> LeftHouses => Houses.Where(h => h % 2 != 0).ToList();
+        public List<int> RightHouses => Houses.Where(h => h % 2 == 0).ToList();
     }
 }
