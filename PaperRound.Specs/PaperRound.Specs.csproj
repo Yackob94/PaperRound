@@ -55,8 +55,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Delivery\AlternateDeliveryMethod.cs" />
-    <Compile Include="Delivery\ClockwiseDeliveryMethod.cs" />
+    <Compile Include="Delivery\ValidAlternateDeliveryMethod.cs" />
+    <Compile Include="Delivery\ValidClockwiseDeliveryMethod.cs" />
     <Compile Include="Delivery\DeliveryMethodWithInvalidSpecification.cs" />
     <Compile Include="Specification\FileMutlipleLines.cs" />
     <Compile Include="Specification\NonNumericCharacters.cs" />
@@ -74,6 +74,7 @@
     <Content Include="SpecificationExamples\Empty.txt" />
     <Content Include="SpecificationExamples\NumberIsSkipped.txt" />
     <Content Include="SpecificationExamples\NumberIsRepeated.txt" />
+    <Content Include="SpecificationExamples\street1.txt" />
     <Content Include="SpecificationExamples\ValidSpecificationFile.txt" />
   </ItemGroup>
   <ItemGroup>

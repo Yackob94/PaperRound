@@ -4,7 +4,7 @@ using Xunit;
 namespace PaperRound.Specs.Delivery
 {
     [Trait("User selects alternate delivery method", "")]
-    public class AlternateDeliveryMethod
+    public class ValidAlternateDeliveryMethod
     {
         [Fact(DisplayName = "Display list of houses in order of delivery")]
         private void ListOfHouses()
