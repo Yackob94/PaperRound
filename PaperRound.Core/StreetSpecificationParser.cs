@@ -1,5 +1,6 @@
 ﻿using PaperRound.Core.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -15,30 +16,25 @@ namespace PaperRound.Core
             if (!File.Exists(filePath))
                 throw new ArgumentException($"File does not exist at path {filePath}");
 
-            var fileResult = ValidateFile(filePath);
+            List<int> houseNumbers;
+            var fileResult = ValidateFile(filePath, out houseNumbers);
 
             if (!fileResult.Valid)
                 return fileResult;
 
-            var oddNumbers = fileResult.HouseNumbers.Where(n => n % 2 != 0).ToArray();
-            var evenNumbers = fileResult.HouseNumbers.Where(n => n % 2 == 0).ToArray();
-
             // Validate the numbers
-            fileResult.StreetSpecification = ValidateSpecification(oddNumbers, evenNumbers);
+            fileResult.StreetSpecification = ValidateSpecification(houseNumbers);
 
             return fileResult;
         }
 
-        private StreetSpecification ValidateSpecification(int[] oddNumbers, int[] evenNumbers)
+        private StreetSpecification ValidateSpecification(List<int> houseNumbers)
         {
-            var evenNumberCount = evenNumbers.Length;
-            var oddNumberCount = oddNumbers.Length;
-
-            var distinctEvenNumberCount = evenNumbers.Distinct().Count();
-            var distinctOddNumberCount = oddNumbers.Distinct().Count();
+            var oddNumbers = houseNumbers.Where(n => n % 2 != 0).ToList();
+            var evenNumbers = houseNumbers.Where(n => n % 2 == 0).ToList();
 
             // Check to make sure each house only appears once
-            if (distinctEvenNumberCount != evenNumberCount || distinctOddNumberCount != oddNumberCount)
+            if (!evenNumbers.SequenceEqual(evenNumbers.Distinct()) || !oddNumbers.SequenceEqual(oddNumbers.Distinct()))
             {
                 return new StreetSpecification
                 {
@@ -47,15 +43,25 @@ namespace PaperRound.Core
                 };
             }
 
-            var orderedEvenNumbers = evenNumbers.OrderBy(n => n);
-            var orderedOddNumbers = oddNumbers.OrderBy(n => n);
+            var orderedEvenNumbers = evenNumbers.OrderBy(n => n).ToList();
+            var orderedOddNumbers = oddNumbers.OrderBy(n => n).ToList();
+
+            // Check there are no numbers in descending order
+            if (!orderedEvenNumbers.SequenceEqual(evenNumbers) || !orderedOddNumbers.SequenceEqual(oddNumbers))
+            {
+                return new StreetSpecification
+                {
+                    Valid = false,
+                    Message = Messages.CannotHaveDescendingNumbers
+                };
+            }
 
             var expectedEvenCount = orderedEvenNumbers.Last() / 2;
             var expectedOddCount = Math.Ceiling((double)orderedOddNumbers.Last() / 2);
 
             // If we have higher last number than the actual count
             // then a number has been missed
-            if (expectedEvenCount > evenNumberCount || expectedOddCount > oddNumberCount)
+            if (expectedEvenCount > evenNumbers.Count || expectedOddCount > oddNumbers.Count)
             {
                 return new StreetSpecification
                 {
@@ -67,14 +73,14 @@ namespace PaperRound.Core
             return new StreetSpecification
             {
                 Valid = true,
-                LeftHouses = oddNumberCount,
-                RightHouses = evenNumberCount
+                Houses = houseNumbers
             };
         }
 
-        private FileResult ValidateFile(string filePath)
+        private FileResult ValidateFile(string filePath, out List<int> houseNumbers)
         {
             string specification;
+            houseNumbers = null;
 
             // Read the first line
             using (var reader = new StreamReader(filePath))
@@ -103,11 +109,11 @@ namespace PaperRound.Core
             }
 
             var specArry = specification.Split(' ');
-            int[] houseNumbers;
+
             try
             {
                 // Parse the numbers
-                houseNumbers = specArry.Select(int.Parse).ToArray();
+                houseNumbers = specArry.Select(int.Parse).ToList();
             }
             catch (FormatException)
             {
@@ -118,10 +124,10 @@ namespace PaperRound.Core
                     Message = Messages.CannotHaveNonNumerics
                 };
             }
+
             return new FileResult
             {
-                Valid = true,
-                HouseNumbers = houseNumbers
+                Valid = true
             };
         }
     }

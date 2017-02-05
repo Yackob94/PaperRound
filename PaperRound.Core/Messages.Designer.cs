@@ -88,6 +88,15 @@ namespace PaperRound.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specification cannot have numbers in descending order.
+        /// </summary>
+        public static string CannotHaveDescendingNumbers {
+            get {
+                return ResourceManager.GetString("CannotHaveDescendingNumbers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specification cannot have multiple lines.
         /// </summary>
         public static string CannotHaveMultipleLines {

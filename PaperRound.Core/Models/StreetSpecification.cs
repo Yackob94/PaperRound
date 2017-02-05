@@ -1,11 +1,14 @@
-﻿namespace PaperRound.Core.Models
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace PaperRound.Core.Models
 {
     public class StreetSpecification
     {
         public bool Valid { get; set; }
-        public int LeftHouses { get; set; }
-        public int RightHouses { get; set; }
-        public int TotalHouses => LeftHouses + RightHouses;
         public string Message { get; set; }
+        public List<int> Houses { get; set; }
+        public List<int> LeftHouses => Houses.Where(h => h % 2 != 0).ToList();
+        public List<int> RightHouses => Houses.Where(h => h % 2 == 0).ToList();
     }
 }

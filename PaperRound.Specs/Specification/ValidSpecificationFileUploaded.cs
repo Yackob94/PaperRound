@@ -26,22 +26,22 @@ namespace PaperRound.Specs.Specification
             Assert.True(_fileResult.StreetSpecification.Valid);
         }
 
-        [Fact(DisplayName = "Total number of houses matches the total of the north and south")]
+        [Fact(DisplayName = "Display total number of houses matches the total of the north and south")]
         private void NumberOfHouses()
         {
-            Assert.Equal(_fileResult.StreetSpecification.RightHouses + _fileResult.StreetSpecification.LeftHouses, _fileResult.StreetSpecification.TotalHouses);
+            Assert.Equal(_fileResult.StreetSpecification.RightHouses.Count + _fileResult.StreetSpecification.LeftHouses.Count, _fileResult.StreetSpecification.Houses.Count);
         }
 
-        [Fact(DisplayName = "Number of houses on the left of the street")]
+        [Fact(DisplayName = "Display number of houses on the left of the street")]
         private void NumberOfHousesOnTheLeft()
         {
-            Assert.Equal(_fileResult.StreetSpecification.RightHouses, 6);
+            Assert.Equal(_fileResult.StreetSpecification.LeftHouses.Count, 5);
         }
 
-        [Fact(DisplayName = "Number of houses on the right of the street")]
+        [Fact(DisplayName = "Display number of houses on the right of the street")]
         private void NumberOfHousesOnTheRight()
         {
-            Assert.Equal(_fileResult.StreetSpecification.LeftHouses, 5);
+            Assert.Equal(_fileResult.StreetSpecification.RightHouses.Count, 6);
         }
     }
 }
