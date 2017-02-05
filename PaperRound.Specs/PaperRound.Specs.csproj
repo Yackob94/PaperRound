@@ -61,6 +61,7 @@
     <Compile Include="Specification\FileMutlipleLines.cs" />
     <Compile Include="Specification\NonNumericCharacters.cs" />
     <Compile Include="Specification\FileIsEmpty.cs" />
+    <Compile Include="Specification\NumbersDescending.cs" />
     <Compile Include="Specification\NumberIsRepeated.cs" />
     <Compile Include="Specification\NumberIsSkipped.cs" />
     <Compile Include="Specification\ValidSpecificationFileUploaded.cs" />
@@ -75,6 +76,7 @@
     <Content Include="SpecificationExamples\NumberIsSkipped.txt" />
     <Content Include="SpecificationExamples\NumberIsRepeated.txt" />
     <Content Include="SpecificationExamples\street1.txt" />
+    <Content Include="SpecificationExamples\DescendingHouses.txt" />
     <Content Include="SpecificationExamples\ValidSpecificationFile.txt" />
   </ItemGroup>
   <ItemGroup>

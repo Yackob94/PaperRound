@@ -33,14 +33,8 @@ namespace PaperRound.Core
             var oddNumbers = houseNumbers.Where(n => n % 2 != 0).ToList();
             var evenNumbers = houseNumbers.Where(n => n % 2 == 0).ToList();
 
-            var evenNumberCount = evenNumbers.Count;
-            var oddNumberCount = oddNumbers.Count;
-
-            var distinctEvenNumberCount = evenNumbers.Distinct().Count();
-            var distinctOddNumberCount = oddNumbers.Distinct().Count();
-
             // Check to make sure each house only appears once
-            if (distinctEvenNumberCount != evenNumberCount || distinctOddNumberCount != oddNumberCount)
+            if (!evenNumbers.SequenceEqual(evenNumbers.Distinct()) || !oddNumbers.SequenceEqual(oddNumbers.Distinct()))
             {
                 return new StreetSpecification
                 {
@@ -49,15 +43,25 @@ namespace PaperRound.Core
                 };
             }
 
-            var orderedEvenNumbers = evenNumbers.OrderBy(n => n);
-            var orderedOddNumbers = oddNumbers.OrderBy(n => n);
+            var orderedEvenNumbers = evenNumbers.OrderBy(n => n).ToList();
+            var orderedOddNumbers = oddNumbers.OrderBy(n => n).ToList();
+
+            // Check there are no numbers in descending order
+            if (!orderedEvenNumbers.SequenceEqual(evenNumbers) || !orderedOddNumbers.SequenceEqual(oddNumbers))
+            {
+                return new StreetSpecification
+                {
+                    Valid = false,
+                    Message = Messages.CannotHaveDescendingNumbers
+                };
+            }
 
             var expectedEvenCount = orderedEvenNumbers.Last() / 2;
             var expectedOddCount = Math.Ceiling((double)orderedOddNumbers.Last() / 2);
 
             // If we have higher last number than the actual count
             // then a number has been missed
-            if (expectedEvenCount > evenNumberCount || expectedOddCount > oddNumberCount)
+            if (expectedEvenCount > evenNumbers.Count || expectedOddCount > oddNumbers.Count)
             {
                 return new StreetSpecification
                 {

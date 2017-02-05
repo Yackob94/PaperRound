@@ -1,5 +1,5 @@
 ﻿# Assumptions
-### Houses on a particular side of a street are not directly next to each other  
+### Houses on a particular side of a street are not adjacent  
 For example:  
 1 3 5 7 9 2 4 6 8  
 ```  

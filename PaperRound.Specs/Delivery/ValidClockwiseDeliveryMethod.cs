@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using PaperRound.Core;
+﻿using PaperRound.Core;
 using PaperRound.Core.Models;
+using System.Collections.Generic;
 using Xunit;
 
 namespace PaperRound.Specs.Delivery
@@ -27,24 +26,6 @@ namespace PaperRound.Specs.Delivery
         private void NumberOfTimesToCrossTheRoad()
         {
             Assert.Equal(1, _method.CrossingRoadCount);
-        }
-    }
-
-    public class ClockwiseDeliveryMethod
-    {
-        // House numbers in order to be delivered
-        public ICollection<int> DeliveryRoute { get; set; }
-        // Number of times the road needs to be crossed to deliver the papers
-        public int CrossingRoadCount { get; set; }
-
-        public ClockwiseDeliveryMethod(StreetSpecification specification)
-        {
-            CrossingRoadCount = 1;
-
-            var deliveryRoute = specification.LeftHouses.ToList();
-            deliveryRoute.AddRange(specification.RightHouses.OrderByDescending(h => h));
-
-            DeliveryRoute = deliveryRoute;
         }
     }
 }
