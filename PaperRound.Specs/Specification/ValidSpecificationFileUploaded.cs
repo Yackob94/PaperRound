@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using PaperRound.Core;
+﻿using PaperRound.Core;
 using PaperRound.Core.Models;
 using Xunit;
 
@@ -30,19 +29,19 @@ namespace PaperRound.Specs.Specification
         [Fact(DisplayName = "Display total number of houses matches the total of the north and south")]
         private void NumberOfHouses()
         {
-            Assert.Equal(_fileResult.StreetSpecification.RightHouses.Count() + _fileResult.StreetSpecification.LeftHouses.Count(), _fileResult.StreetSpecification.Houses.Count());
+            Assert.Equal(_fileResult.StreetSpecification.RightHouses.Count + _fileResult.StreetSpecification.LeftHouses.Count, _fileResult.StreetSpecification.Houses.Count);
         }
 
         [Fact(DisplayName = "Display number of houses on the left of the street")]
         private void NumberOfHousesOnTheLeft()
         {
-            Assert.Equal(_fileResult.StreetSpecification.LeftHouses.Count(), 5);
+            Assert.Equal(_fileResult.StreetSpecification.LeftHouses.Count, 5);
         }
 
         [Fact(DisplayName = "Display number of houses on the right of the street")]
         private void NumberOfHousesOnTheRight()
         {
-            Assert.Equal(_fileResult.StreetSpecification.RightHouses.Count(), 6);
+            Assert.Equal(_fileResult.StreetSpecification.RightHouses.Count, 6);
         }
     }
 }
