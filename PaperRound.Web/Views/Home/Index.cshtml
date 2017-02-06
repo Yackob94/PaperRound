@@ -1,0 +1,41 @@
+﻿@model PaperRound.Web.Models.Report
+<div class="row">
+    <div class="col-md-12">
+        <p>Choose your street specification to find out details about your delivery route</p>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" class="btn btn-sm btn-success" value="Upload" />
+            <input type="file" name="specificationFile" />
+        }
+    </div>
+</div>
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Summary</h3>
+            <p style="color: @(@Model.Valid ? "green" : "red")">@Model.Message</p>
+            @if (Model.Valid)
+            {
+                <span>Total number of houses: @Model.TotalHouses</span><br/>
+                <span>Total number on the left: @Model.LeftHouses</span><br/>
+                <span>Total number on the right: @Model.RightHouses</span>
+            }
+        </div>
+        <div class="col-md-8">
+            <h3>Delivery</h3>
+            @if (Model.Valid)
+            {
+                <strong>Clockwise delivery plan</strong><br />
+                <span> You will have to cross the road @Model.ClockwiseDeliveryMethod.CrossingRoadCount time@(@Model.ClockwiseDeliveryMethod.CrossingRoadCount > 1 ? "s" : "")</span>
+                <p>You will want to order your papers as below:</p>
+                <p>@string.Join(", ", Model.ClockwiseDeliveryMethod.DeliveryRoute)</p>
+                <strong>Alternate delivery plan</strong><br />
+                <span> You will have to cross the road @Model.AlternateDeliveryMethod.CrossingRoadCount time@(@Model.AlternateDeliveryMethod.CrossingRoadCount > 1 ? "s" : "")</span>
+                <p>You will want to order your papers as below:</p>
+                <p>@string.Join(", ", Model.AlternateDeliveryMethod.DeliveryRoute)</p>
+            }
+        </div>
+    </div>
+}
