@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using PaperRound.Core;
+﻿using PaperRound.Core;
 using PaperRound.Core.Models;
 using PaperRound.Web.Models;
+using System;
+using System.Configuration;
+using System.IO;
+using System.Web;
+using System.Web.Mvc;
 
 namespace PaperRound.Web.Controllers
 {
@@ -20,7 +17,7 @@ namespace PaperRound.Web.Controllers
         {
             _deliveryFactory = deliveryFactory;
         }
-
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -28,13 +25,13 @@ namespace PaperRound.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UploadSpecification(HttpPostedFileBase specificationFile)
+        public ActionResult Index(HttpPostedFileBase specificationFile)
         {
 
             if (specificationFile == null)
                 return View("Index", new Report { Message = "No file was selected" });
 
-            var uploadDirectory = Path.Combine(Environment.CurrentDirectory, ConfigurationManager.AppSettings["SpecificationDirectory"]);
+            var uploadDirectory = Server.MapPath(ConfigurationManager.AppSettings["SpecificationDirectory"]);
 
             if (!Directory.Exists(uploadDirectory))
                 Directory.CreateDirectory(uploadDirectory);

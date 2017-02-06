@@ -8,15 +8,22 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-<div class="container body-content">
-    <h1>Paper round</h1>
-    @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy; @DateTime.UtcNow.Year - Paper round</p>
-    </footer>
-</div>
-
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Paper round</h1>
+            </div>
+        </div>
+        @RenderBody()
+        <div class="row">
+            <div class="col-md-12">
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.UtcNow.Year - Paper round</p>
+                </footer>
+            </div>
+        </div>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
